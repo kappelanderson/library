@@ -39,7 +39,7 @@ function addBookToLibrary() {
     const readbtn = document.createElement('button')
     readbtn.classList.add('read_btn')
     readbtn.classList.add(myLibrary[i].read)
-    readbtn.innerText = myLibrary[i].read 
+    readbtn.innerText = myLibrary[i].read == 'read' ? 'Read' : 'Not Read'
     card.appendChild(readbtn)
 
     const removebtn = document.createElement('button')
