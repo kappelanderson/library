@@ -1,18 +1,24 @@
 let myLibrary = [];
+let titleInput = document.querySelector('#input_title')
+let authorInput = document.querySelector('#input_author')
+let pagesInput = document.querySelector('#input_pages')
 
-function Book(title, author, pages, read){
-    this.title = title
-    this.author = author
-    this.pages = pages
-    this.read = read
-    this.info = function() {
+
+class Book{
+    constructor(title,author,pages,read){
+      this.title = title
+      this.author = author
+      this.pages = pages
+      this.read = read
+  }
+    info() {
         return `${this.title} by ${this.author}, ${this.pages}, ${this.read}`
     }
 }
 function getInputBook(){
-    let title = document.querySelector('#input_title').value
-    let author = document.querySelector('#input_author').value
-    let pages = document.querySelector('#input_pages').value
+    let title = titleInput.value
+    let author = authorInput.value
+    let pages = pagesInput.value
     let read; 
     if(document.querySelector('#input_read').checked){
       read = 'read'
@@ -110,5 +116,52 @@ xbtn.addEventListener('click',()=>{
 
 // input submit
 let inputsubmit = document.querySelector('#input_submit').addEventListener('click', ()=>{
-  addBookToLibrary()
+  if(pagesInput.checkValidity() && authorInput.checkValidity() && titleInput.checkValidity()){
+  addBookToLibrary()}
+
 })
+
+
+
+
+
+// TEST VALIDATE
+titleInput.addEventListener("input", () => {
+  titleInput.setCustomValidity("");
+  titleInput.checkValidity();
+});
+
+titleInput.addEventListener("invalid", () => {
+  if (titleInput.value === "") {
+    titleInput.setCustomValidity("Enter the title of the book!");
+  } else if(titleInput.validity.tooLong || titleInput.validity.tooShort){
+    titleInput.setCustomValidity("The title lenght must be between 5 and 22 longer");
+  }
+});
+
+authorInput.addEventListener("input", () => {
+  authorInput.setCustomValidity("");
+  authorInput.checkValidity();
+});
+
+authorInput.addEventListener("invalid", () => {
+  if (authorInput.value === "") {
+    authorInput.setCustomValidity("Enter the author of the book!");
+  } else if(authorInput.validity.tooLong || authorInput.validity.tooShort){
+    authorInput.setCustomValidity("The author name must be between 5 and 22 longer");
+  }
+});
+
+
+pagesInput.addEventListener("input", () => {
+  pagesInput.setCustomValidity("");
+  pagesInput.checkValidity();
+});
+
+pagesInput.addEventListener("invalid", () => {
+  if (pagesInput.value === "") {
+    pagesInput.setCustomValidity("Enter the number of pages!");
+  } else if(pagesInput.validity.rangeOverFlow || pagesInput.validity.rangeUnderFlow){
+    pagesInput.setCustomValidity("You can only have books between 40 and 3000 pages longer");
+  }
+});
