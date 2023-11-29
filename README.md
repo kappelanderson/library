@@ -1,5 +1,5 @@
-# Vanilla JavaScript Library
-A simple library where you can add books remove and check or uncheck the reading status: https://www.theodinproject.com/lessons/node-path-javascript-library
+# Library
+A library app where you can add books remove and check or uncheck the reading status: https://www.theodinproject.com/lessons/node-path-javascript-library
 
 # Used React features:
 - Constructor
