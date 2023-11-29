@@ -9,4 +9,5 @@ A simple library where you can add books remove and check or uncheck the reading
 - Object as a design Pattern
 
 # In live: https://library-rouge.vercel.app/
-![image](https://user-images.githubusercontent.com/96890436/201543278-66128fc7-835a-4ca0-ab1a-9e74e5f6c2dd.png)
+<img width="920" alt="image" src="https://github.com/kappelanderson/library/assets/96890436/b33b512d-0825-4bf5-b04d-668d8917db5b">
+
