@@ -39,43 +39,34 @@ function addBookToLibrary() {
     card.classList.add('card')
     document.querySelector('.container').appendChild(card)
 
+    const info = document.createElement('p')
+    info.innerText = `${myLibrary[i].title}\n${myLibrary[i].author}\n${myLibrary[i].pages}`
+    card.appendChild(info)
 
-    const title = document.createElement('p')
-    title.innerText = `${myLibrary[i].title}`
-    card.appendChild(title)
+    const readbtn = document.createElement('button')
+    readbtn.classList.add('read_btn')
+    readbtn.classList.add(myLibrary[i].read)
+    readbtn.innerText = myLibrary[i].read == 'read' ? 'Read' : 'Not Read'
+    card.appendChild(readbtn)
 
-    const author = document.createElement('p')
-    author.innerText = `${myLibrary[i].author}`
-    card.appendChild(author)
+    const removebtn = document.createElement('button')
+    removebtn.classList.add('remove_btn')
+    removebtn.innerText = 'Remove'
+    card.appendChild(removebtn)
 
-    const pages = document.createElement('p')
-    pages.innerText = `${myLibrary[i].pages}`
-    card.appendChild(pages)
-
-    const read = document.createElement('div')
-    read.classList.add('read')
-    read.classList.add(myLibrary[i].read)
-    read.innerText = myLibrary[i].read == 'read' ? 'Read' : 'Not Read'
-    card.appendChild(read)
-
-    const deletebtn = document.createElement('div')
-    deletebtn.classList.add('delete')
-    deletebtn.innerText = 'Delete'
-    card.appendChild(deletebtn)
-
-    read.addEventListener('click',()=>{
-      if(read.classList.contains('notread')){
-        read.classList.remove('notread')
-        read.classList.add('read')
-        read.textContent = 'Read'
+    readbtn.addEventListener('click',()=>{
+      if(readbtn.classList.contains('notread')){
+        readbtn.classList.remove('notread')
+        readbtn.classList.add('read')
+        readbtn.textContent = 'Read'
       }
       else{
-        read.classList.add('notread')
-        read.classList.remove('read')
-        read.textContent = 'Not Read'
+        readbtn.classList.add('notread')
+        readbtn.classList.remove('read')
+        readbtn.textContent = 'Not Read'
       }
     })
-    deletebtn.addEventListener('click', ()=> deletebtn.parentElement.remove())
+    removebtn.addEventListener('click', ()=> removebtn.parentElement.remove())
 
 
    }
@@ -108,25 +99,20 @@ removebtn.forEach(btn => {
   btn.addEventListener('click', ()=> btn.parentElement.remove())
 })
 
-//button add a book
+//h1 add a book
 
-
-let addbookslink = document.querySelector('.add')
+let addbookslink = document.querySelector('h1')
 
 addbookslink.addEventListener('click',()=>{
-  document.querySelector('.addbooks').style.display = 'flex'
-  document.querySelector('#overlay').style.display = 'block'
-
+  document.querySelector('.addbooksform').style.display = 'block'
 })
 
-// When overlay is clicked close the add books form
+// x btn
 
-let overlay = document.querySelector('#overlay')
+let xbtn = document.querySelector('.x')
 
-overlay.addEventListener('click',()=>{
-  document.querySelector('.addbooks').style.display = 'none'
-  document.querySelector('#overlay').style.display = 'none'
-
+xbtn.addEventListener('click',()=>{
+  document.querySelector('.addbooksform').style.display = 'none'
 })
 
 // input submit

@@ -1,104 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Poppins;
 }
-.addbooksform{
-    border-radius: 5%;
-    padding-top: 20px;
-    position: absolute;
-    display: none;
-    background-color: rgb(255, 255, 255);
-    width: 250px;
-    height: 300px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-
-    
-    
+body{
+    background-color: rgb(236, 235, 235);
+}
+.nav{
+    height: 100px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 1.95px 0px;
+    padding: 10px;
+}
+.nav>p{
+    font-size: 30px;
+}
+.search{
+    margin: 20px;
+}
+.darkmode{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 .container{
-    width: 100vw;
-    padding: 20px;
-    background-color: rgb(238, 238, 238);
+    padding: 30px;
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
 }
 .card{
-    border-radius: 5%;
-    font-size: 19px;
-    width: 230px;
-    height: 250px;
-    background-color: rgb(255, 255, 255);
+    width: 250px;
+    height: 270px;
+    background-color: white;
+    border-radius: 10px;
+    font-size: 20px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    gap: 15px;
+}
+.card>div{
+    box-sizing: border-box;
+    background-color: rgb(255, 98, 98);
+    width: 100%;
+    color: white;
+    border-radius: 5px;
+    display: flex;
     justify-content: center;
     align-items: center;
-    gap: 0px;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-}
-.readstatus{
-    width: 80%;
-    height: 30px;
-    margin-top: 20px;
-    margin-bottom: 10px;
-
-}
-.remove_btn, .read_btn{
-    width: 80%;
-    height: 30px;
-    background-color: brown;
-    color: white;
-}
-
-.x{
-    position: absolute;
-    top: 5px;
-    right: 5px;
-}
-.notread{
-    background-color: red;
-    color: white;
-}
-.read{
-    background-color: green;
-    color: white;
-}
-h1{
     cursor: pointer;
-    background-color: rgb(238, 238, 238);
 }
-button{
-    cursor: pointer;
-
+.card>.delete{
+    background-color: rgb(236, 235, 235);
+    color: black;
 }
-input, button{
-    margin: 5px 0px;
-    width: 80%;
-    height: 30px;
-    border: 1px;
-    border-radius: 2%;
-
-}
-.x{
-    width: 25px;
-    height: 25px;
-}
-#input_submit{
-    background-color: brown;
+.card>.read{
+    background-color: rgb(76, 252, 123);
     color: white;
-    font-weight: 600px;
 }
-input{
-    background-color: rgb(245, 245, 245);
+.card>.notread{
+    background-color: rgb(252, 176, 76);
+    color: white;
 }
-body{
-    background-color: (238, 238, 238);
+.add{
+    background-color: rgb(78, 78, 255);
+    color: white;
+    border-radius: 50%;
+    font-size: 60px;
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    cursor: pointer;
+}
+#overlay {
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.3); /* Black background with opacity */
+}
+.addbooks{
+    padding: 20px 0px;
+    z-index: 99;
+    position: fixed;
+    width: 300px; /* Full width (cover the whole page) */
+    height: 350px; /* Full height (cover the whole page) */
+    background-color: rgb(236, 235, 235);
+    top: 50%;
+    left: 50%;
+    font-size: 20px;
+    margin-top: -175px;
+    margin-left: -150px;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    border-radius: 10px;
+}
+.addbooks>input{
+    box-sizing: border-box;
+    width: 80%;
+    height: 40px;
+    padding: 0 10px;
+
+}
+.addbooks>.submit{
+    box-sizing: border-box;
+    width: 80%;
+    height: 40px;
+    background-color: rgb(78, 78, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    font-weight: 700;
+    color: white;
+}
+.addbooks>.read{
+    display: flex;
+    gap: 10px;
 }

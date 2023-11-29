@@ -1,30 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <script src="index.js" defer></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Library</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="addbooksform">
-        <button class="x">X</button>
-        <h2>Add new book</h2>
-        <form action="" method="post">
-            <input type="text" placeholder="Title" id="input_title" maxlength="22" minlength="5" required>
-            <input type="text" placeholder="Author" id="input_author" maxlength="22" minlength="5" required>
-            <input type="number" placeholder="Pages" id="input_pages" min="40" max="3000" required> <br>
-            <span>Have you ever read it</span><input type="checkbox" name="" id="input_read" > <br>
-            <button id="input_submit" >Submit</button>
-        </form>
+    <div id="overlay"></div>
+    <div class="addbooks">
+        <p>Add new book</p>
+        <input type="text" placeholder="Title" id="input_title">
+        <input type="text" placeholder="Author" id="input_author">
+        <input type="text" placeholder="Pages" id="input_pages">
+        <br>
+        <div class="read">
+            <span>Have you read it?</span><input type="checkbox" name="" id="input_read">
+
+        </div>
+        <div class="submit" id="input_submit">Submit</div>
+
     </div>
-    <h1>Add a book +</h1>
+    <div class="nav">
+        <p>Personal Library</p>
+
+        <div class="darkmode">
+            <span>Dark Mode: </span>
+            <i class="material-icons">dark_mode</i>
+
+        </div>
+    </div>
+    <div class="search">
+        <span>Search</span>
+        <input type="text">
+        <span>Order By:</span>
+        <select name="" id="">
+            <option value="Index">Publishing Date</option>
+            <option value="Index">Insertion Date</option>
+            <option value="Index">Read Date</option>
+
+        </select>
+    </div>
     <div class="container">
+<!--
+    CARD EXAMPLE
+        <div class="card">
+            <p>Title</p>
+            <p>Author</p>
+            <p>300 pages</p>
 
-        
+            <div class="read">Not read</div>
+            <div class="delete">Delete</div>
 
+        </div>
+-->
     </div>
+    <div class="add">
+        <i class="material-icons add">add</i>
+    </div>
+
+
 </body>
 </html>
