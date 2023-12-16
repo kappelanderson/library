@@ -1,4 +1,6 @@
-let myLibrary = [];
+const localStorageLibrary = JSON.parse(localStorage.getItem("library"))
+let library = localStorage.getItem("library") !== null ? localStorageLibrary : []
+
 let titleInput = document.querySelector('#input_title')
 let authorInput = document.querySelector('#input_author')
 let pagesInput = document.querySelector('#input_pages')
@@ -28,56 +30,16 @@ function getInputBook(){
     }
     return new Book(title, author, pages, read)
 }
-
+const updateLocalStorage = () => {
+  localStorage.setItem('library', JSON.stringify(library))
+}
 function addBookToLibrary() {
   // push the new book to library
-   myLibrary.push(getInputBook())
+   library.push(getInputBook())
    console.log(getInputBook())
   // push the book dom
-   let i = myLibrary.length - 1
-    const card = document.createElement("div");
-    card.classList.add('card')
-    document.querySelector('.container').appendChild(card)
-
-
-    const title = document.createElement('p')
-    title.innerText = `${myLibrary[i].title}`
-    card.appendChild(title)
-
-    const author = document.createElement('p')
-    author.innerText = `${myLibrary[i].author}`
-    card.appendChild(author)
-
-    const pages = document.createElement('p')
-    pages.innerText = `${myLibrary[i].pages}`
-    card.appendChild(pages)
-
-    const read = document.createElement('div')
-    read.classList.add('read')
-    read.classList.add(myLibrary[i].read)
-    read.innerText = myLibrary[i].read == 'read' ? 'Read' : 'Not Read'
-    card.appendChild(read)
-
-    const deletebtn = document.createElement('div')
-    deletebtn.classList.add('delete')
-    deletebtn.innerText = 'Delete'
-    card.appendChild(deletebtn)
-
-    read.addEventListener('click',()=>{
-      if(read.classList.contains('notread')){
-        read.classList.remove('notread')
-        read.classList.add('read')
-        read.textContent = 'Read'
-      }
-      else{
-        read.classList.add('notread')
-        read.classList.remove('read')
-        read.textContent = 'Not Read'
-      }
-    })
-    deletebtn.addEventListener('click', ()=> deletebtn.parentElement.remove())
-
-
+   readLibrary()
+    updateLocalStorage()
    }
 
 
@@ -181,3 +143,57 @@ pagesInput.addEventListener("invalid", () => {
     pagesInput.setCustomValidity("You can only have books between 40 and 3000 pages longer");
   }
 });
+
+const readLibrary = () => {
+  let container = document.querySelector(".container")
+  while (container.firstChild) {
+    container.removeChild(container.firstChild);
+    }
+
+ library.forEach(element => {
+  //let i = library.length - 1
+  const card = document.createElement("div");
+  card.classList.add('card')
+  document.querySelector('.container').appendChild(card)
+
+
+  const title = document.createElement('p')
+  title.innerText = `${element.title}`
+  card.appendChild(title)
+
+  const author = document.createElement('p')
+  author.innerText = `${element.author}`
+  card.appendChild(author)
+
+  const pages = document.createElement('p')
+  pages.innerText = `${element.pages}`
+  card.appendChild(pages)
+
+  const read = document.createElement('div')
+  read.classList.add('read')
+  read.classList.add(element.read)
+  read.innerText = element.read == 'read' ? 'Read' : 'Not Read'
+  card.appendChild(read)
+
+  const deletebtn = document.createElement('div')
+  deletebtn.classList.add('delete')
+  deletebtn.innerText = 'Delete'
+  card.appendChild(deletebtn)
+
+  read.addEventListener('click',()=>{
+    if(read.classList.contains('notread')){
+      read.classList.remove('notread')
+      read.classList.add('read')
+      read.textContent = 'Read'
+    }
+    else{
+      read.classList.add('notread')
+      read.classList.remove('read')
+      read.textContent = 'Not Read'
+    }
+  })
+  deletebtn.addEventListener('click', ()=> deletebtn.parentElement.remove())
+ });
+}
+
+readLibrary()
